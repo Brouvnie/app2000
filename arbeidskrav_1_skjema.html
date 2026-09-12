@@ -1,0 +1,46 @@
+<form id="tripForm">
+  <label for="title">Navn på tur:</label>
+  <input
+    type="text"
+    id="title"
+    name="title"
+    required
+    minlength="3"
+    maxlength="100"
+  />
+
+  <label for="difficulty">Vanskelighetsgrad:</label>
+  <select id="difficulty" name="difficulty" required>
+    <option value="">Velg vanskelighetsgrad</option>
+    <option value="easy">Enkel</option>
+    <option value="medium">Middels</option>
+    <option value="hard">Krevende</option>
+  </select>
+
+  <label for="startDate">Startdato:</label>
+  <input type="date" id="startDate" name="startDate" required />
+
+  <label for="endDate">Sluttdato:</label>
+  <input type="date" id="endDate" name="endDate" required />
+
+  <label for="participants">Maks antall deltakere:</label>
+  <input
+    type="number"
+    id="participants"
+    name="participants"
+    min="1"
+    max="50"
+    required
+  />
+
+  <label for="description">Beskrivelse:</label>
+  <textarea
+    id="description"
+    name="description"
+    minlength="20"
+    maxlength="1000"
+    required
+  ></textarea>
+
+  <button type="submit">Opprett tur</button>
+</form>
