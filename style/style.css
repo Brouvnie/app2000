@@ -4,6 +4,21 @@
   color: white;
 }
 
+#formContainer {
+  display: block;
+  margin-top: 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#tripForm,
+#sporsmaal {
+  max-width: 50%;
+}
+
 input,
 select,
 textarea {
@@ -24,12 +39,5 @@ button {
   border: 0.2em solid white;
   font-size: 1.33em;
   margin-top: 1em;
-}
-
-#tripForm {
-  margin-top: 5em;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 2em;
 }
