@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hytter</title>
+    <link rel="stylesheet" href="style/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Hytter:</h1>
+      <h3 id="antallHytter"></h3>
+
+      <div id="cabins"></div>
+      <div id="sporsmaal">
+        <h2>Svar på spørsmål:</h2>
+
+        <p>
+          En mulig JSON-representasjon av hyttedata kan inneholde informasjon om
+          navn, lokasjon, hyttetype, pris, fasiliteter og antall sengeplasser.
+          Lokasjon kan representeres som et underobjekt, mens fasiliteter kan
+          representeres som et array.
+        </p>
+
+        <p>Eksempel:</p>
+
+        <pre><code>[
+            {
+                "id": 1,
+                "name": "Fjellheim",
+                "location": {
+                "municipality": "Lom",
+                "latitude": 61.837,
+                "longitude": 8.568
+                },
+                "type": "Betjent",
+                "pricePerNight": 650,
+                "facilities": ["Dusj", "WiFi", "Restaurant"],
+                "beds": 40
+            }
+            ]</code></pre>
+
+        <p>
+          I TypeScript kan man lage interfaces som beskriver hvordan dataene
+          skal være bygget opp. Dette gjør det mulig å angi hvilke datatyper de
+          ulike egenskapene skal ha.
+        </p>
+
+        <pre><code>interface CabinLocation {
+            municipality: string;
+            latitude: number;
+            longitude: number;
+            }
+
+            interface Cabin {
+            id: number;
+            name: string;
+            location: CabinLocation;
+            type: string;
+            pricePerNight: number;
+            facilities: string[];
+            beds: number;
+            }</code>
+            </pre>
+
+        <p>
+          Deretter kan hyttene vises ved hjelp av en funksjon som går gjennom
+          arrayet og oppretter HTML-elementer:
+        </p>
+
+        <pre><code>function displayCabins(cabins: Cabin[]): void {
+                const container = document.getElementById("cabins");
+
+                if (!container) {
+                    return;
+                }
+
+     for (const cabin of cabins) {
+    const cabinElement = document.createElement("div");
+    cabinElement.className = "cabin";
+
+        cabinElement.innerHTML = `
+      &lt;h2&gt;${cabin.name}&lt;/h2&gt;
+      &lt;p&gt;Sted: ${cabin.location.municipality}&lt;/p&gt;
+      &lt;p&gt;Type: ${cabin.type}&lt;/p&gt;
+      &lt;p&gt;Pris per natt: ${cabin.pricePerNight} kr&lt;/p&gt;
+      &lt;p&gt;Sengeplasser: ${cabin.beds}&lt;/p&gt;
+      &lt;p&gt;Fasiliteter: ${cabin.facilities.join(", ")}&lt;/p&gt;
+        `;
+
+        container.appendChild(cabinElement);
+         }
+        }</code></pre>
+
+        <p>
+          En fordel med TypeScript sammenlignet med JavaScript er at TypeScript
+          støtter statisk typing. Dette gjør at feil, for eksempel at antall
+          sengeplasser blir lagret som tekst i stedet for et tall, kan oppdages
+          allerede ved kompilering. Interfaces gjør også datastrukturen
+          tydeligere og kan gjøre koden lettere å vedlikeholde. TypeScript gir i
+          tillegg bedre støtte for blant annet autoutfylling og feilmeldinger i
+          utviklingsmiljøet.
+        </p>
+
+        <p>
+          En ulempe er at TypeScript krever et ekstra steg fordi koden må
+          kompileres til JavaScript før den kan kjøres i nettleseren. Det
+          innebærer også litt mer kode og oppsett enn ved bruk av vanlig
+          JavaScript.
+        </p>
+
+        <p>
+          Koden kan testes ved å kompilere TypeScript-filen til JavaScript og
+          deretter åpne HTML-siden i en nettleser. Man kan kontrollere at alle
+          hyttene blir vist med riktig informasjon. TypeScript-kompilatoren kan
+          også testes ved å legge inn en verdi med feil datatype, for eksempel
+          <code>beds: "40"</code>, og kontrollere at kompilatoren gir en
+          feilmelding.
+        </p>
+      </div>
+    </div>
+
+    <script src="hytter.js"></script>
+  </body>
+</html>
