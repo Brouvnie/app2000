@@ -9,6 +9,35 @@ h3 {
   margin: 0.25em;
 }
 
+#usnLogo {
+  width: 33%;
+  background-color: white;
+  padding: 2em;
+  border-radius: 2em;
+}
+
+p#gruppe {
+  background-color: white;
+  color: #7800f0;
+  padding: 1em;
+}
+
+p#bar {
+  height: 2.75em;
+  width: 0.2em;
+  background-color: #7800f0;
+  color: #7800f0;
+}
+
+#overskrift2 {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background-color: white;
+  width: 30%;
+  border-radius: 2em;
+}
+
 .container {
   display: flex;
   align-items: center;
