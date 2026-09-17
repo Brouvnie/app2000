@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiU - Turistforeningen i Utopia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="grid-container">
+
+    <header>
+        <h1>TiU</h1>
+        <p>Turistforeningen i Utopia</p>
+    </header>
+
+    <nav>
+        <a href="#">Forside</a>
+        <a href="#">Finn tur</a>
+        <a href="#">Hytter</a>
+        <a href="#">Fellesturer</a>
+        <a href="#">Min profil</a>
+    </nav>
+
+    <aside class="filter">
+        <h2>Finn tur</h2>
+
+        <label for="type">Type tur</label>
+        <select id="type">
+            <option>Alle</option>
+            <option>Fottur</option>
+            <option>Sykkeltur</option>
+            <option>Skitur</option>
+        </select>
+
+        <label for="difficulty">Vanskelighetsgrad</label>
+        <select id="difficulty">
+            <option>Alle</option>
+            <option>Enkel</option>
+            <option>Middels</option>
+            <option>Krevende</option>
+        </select>
+
+        <label for="duration">Varighet</label>
+        <select id="duration">
+            <option>Alle</option>
+            <option>Under 2 timer</option>
+            <option>2–5 timer</option>
+            <option>Over 5 timer</option>
+        </select>
+
+        <button>Søk</button>
+    </aside>
+
+    <main class="map">
+        <h2>Utforsk turer</h2>
+
+        <div class="map-placeholder">
+            Kart
+        </div>
+    </main>
+
+    <aside class="advertisement">
+        <p>ANNONSE</p>
+        <h3>Trenger du turutstyr?</h3>
+        <p>Se vårt utvalg av utstyr for din neste fjelltur.</p>
+        <button>Les mer</button>
+    </aside>
+
+    <section class="trips">
+
+        <h2>Anbefalte turer</h2>
+
+        <div class="trip-grid">
+
+            <article>
+                <div class="image-placeholder">Bilde</div>
+                <h3>Fjelltur i Jotunheimen</h3>
+                <p>Krevende · 6 timer</p>
+                <button>Se tur</button>
+            </article>
+
+            <article>
+                <div class="image-placeholder">Bilde</div>
+                <h3>Familietur ved innsjøen</h3>
+                <p>Enkel · 2 timer</p>
+                <button>Se tur</button>
+            </article>
+
+            <article>
+                <div class="image-placeholder">Bilde</div>
+                <h3>Helgetur til Utopiahytta</h3>
+                <p>Middels · 4 timer</p>
+                <button>Se tur</button>
+            </article>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© Turistforeningen i Utopia</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
