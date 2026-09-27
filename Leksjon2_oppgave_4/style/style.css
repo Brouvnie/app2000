@@ -4,7 +4,46 @@
   color: white;
 }
 
+#usnLogo {
+  width: 33%;
+  background-color: white;
+  padding: 2em;
+  border-radius: 2em;
+}
+
+p#gruppe {
+  background-color: white;
+  color: #7800f0;
+  padding: 1em;
+}
+
+p#bar {
+  height: 2.75em;
+  width: 0.2em;
+  background-color: #7800f0;
+  color: #7800f0;
+}
+
+#overskrift2 {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background-color: white;
+  width: 30%;
+  border-radius: 2em;
+}
+
 #formContainer {
+  display: block;
+  margin-top: 1em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#tripContainer {
   display: block;
   margin-top: 1em;
   display: flex;

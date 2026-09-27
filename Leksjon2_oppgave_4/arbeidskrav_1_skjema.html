@@ -5,82 +5,110 @@
     </head>
     
     <body>
+        <div class="overskrift">
+      <div id="overskrift2">
+        <img
+          id="usnLogo"
+          src="https://res.cloudinary.com/brandpad/image/upload/c_scale,dpr_auto,f_auto,w_768/v1669295198/19313/usn-logo_lilla"
+        />
+        <p id="bar">|</p>
+        <p id="gruppe">APP2000, arbeidskrav 1, gruppe 3</p>
+      </div>
+    </div>
         <div id = formContainer>
-            <h2>Registrer tur:</h2>
-            <form id="tripForm">
-            <label for="title">Navn på tur:</label>
-            <input
-                type="text"
-                id="title"
-                name="title"
-                required
-                minlength="3"
-                maxlength="100"
-            />
+            <div id = tripContainer>
+                <h2 class="headings">Registrer tur:</h2>
+                <form id="tripForm">
+                <label for="title">Navn på tur:</label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    required
+                    minlength="3"
+                    maxlength="100"
+                />
 
-            <label for="difficulty">Vanskelighetsgrad:</label>
-            <select id="difficulty" name="difficulty" required>
-                <option value="">Velg vanskelighetsgrad</option>
-                <option value="easy">Enkel</option>
-                <option value="medium">Middels</option>
-                <option value="hard">Krevende</option>
-            </select>
+                <label for="difficulty">Vanskelighetsgrad:</label>
+                <select id="difficulty" name="difficulty" required>
+                    <option value="">Velg vanskelighetsgrad</option>
+                    <option value="easy">Enkel</option>
+                    <option value="medium">Middels</option>
+                    <option value="hard">Krevende</option>
+                </select>
 
-            <label for="startDate">Startdato:</label>
-            <input type="date" id="startDate" name="startDate" required />
+                <label for="startDate">Startdato:</label>
+                <input type="date" id="startDate" name="startDate" required />
 
-            <label for="endDate">Sluttdato:</label>
-            <input type="date" id="endDate" name="endDate" required />
+                <label for="endDate">Sluttdato:</label>
+                <input type="date" id="endDate" name="endDate" required />
 
-            <label for="participants">Maks antall deltakere:</label>
-            <input
-                type="number"
-                id="participants"
-                name="participants"
-                min="1"
-                max="50"
-                required
-            />
+                <label for="participants">Maks antall deltakere:</label>
+                <input
+                    type="number"
+                    id="participants"
+                    name="participants"
+                    min="1"
+                    max="50"
+                    required
+                />
 
-            <label for="description">Beskrivelse:</label>
-            <textarea
-                id="description"
-                name="description"
-                minlength="20"
-                maxlength="1000"
-                required
-            ></textarea>
+                <label for="description">Beskrivelse:</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    minlength="10"
+                    maxlength="1000"
+                    required
+                ></textarea>
 
-            <button type="submit">Opprett tur</button>
-            </form>
-            <h2>Svar på spørsmålet:</h2>
-            <p id="sporsmaal">
-                Nei det er ikke tilstrekkelig å kjøre all validering på klientsiden. Dette fordi da har brukeren kontroll over valideringen. 
-                Noen brukere har f.eks. ikke javascript aktivert, andre har onde hensikter. Hvis ikke validering på serversiden er konfigurert kan man få data som ikke er validert. 
-                Dette vil igjen gjøre dataene i databasen dårligere og i verste fall kræsje applikasjonen ved innlasting. 
-            </p>
+                <button type="submit">Opprett tur</button>
+                </form>
+                <h2 class="headings">Svar på spørsmålet:</h2>
+                <p id="sporsmaal">
+                    Nei det er ikke tilstrekkelig å kjøre all validering på klientsiden. Dette fordi da har brukeren kontroll over valideringen. 
+                    Noen brukere har f.eks. ikke javascript aktivert, andre har onde hensikter. Hvis ikke validering på serversiden er konfigurert kan man få data som ikke er validert. 
+                    Dette vil igjen gjøre dataene i databasen dårligere og i verste fall kræsje applikasjonen ved innlasting. 
+                </p>
+            </div>
+            <h1 id="successMessage" style="display: none;">
+                Tur opprettet!
+            </h1>
         </div>
+        
         <script>
-    const form = document.getElementById("tripForm");
-    const startDate = document.getElementById("startDate");
-    const endDate = document.getElementById("endDate");
+            const form = document.getElementById("tripForm");
+            const startDate = document.getElementById("startDate");
+            const endDate = document.getElementById("endDate");
 
-    form.addEventListener("submit", function(event) {
-        if (endDate.value < startDate.value) {
-        event.preventDefault();
+            function validateDates() {
+            if (endDate.value < startDate.value) {
+                endDate.setCustomValidity(
+                    "Sluttdato kan ikke være før startdato."
+                );
+            } else {
+                endDate.setCustomValidity("");
+            }
+            }
 
-        endDate.setCustomValidity(
-            "Sluttdato kan ikke være før startdato."
-        );
-        } else {
-        endDate.setCustomValidity("");
-        }
-    });
+            startDate.addEventListener("input", validateDates);
+            endDate.addEventListener("input", validateDates);
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
 
-    endDate.addEventListener("input", function() {
-        endDate.setCustomValidity("");
-    });
-    </script>
+                const successMessage = document.getElementById("successMessage");
+                const tripContainer = document.getElementById("tripContainer");
+
+                tripContainer.style.display = "none";
+                successMessage.style.display = "block";
+
+                setTimeout(function() {
+                    successMessage.style.display = "none";
+                    tripContainer.style.display = "flex";
+                    form.reset();
+                }, 3000);
+            });
+        </script>
     
     </body>
 </html>
